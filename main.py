@@ -46,7 +46,8 @@ from utils import (
     get_device,
 )
 from datasets import get_dataset, HyperX, open_file, DATASETS_CONFIG
-from models import get_model, train, test, save_model
+# from models import get_model, train, test, save_model
+from models import get_model, train, test, save_model, load_model
 
 import argparse
 
