@@ -43,8 +43,14 @@ def guidedMedianFilter(inputImg, hsiData):
       
             if(predImgWindow[1,1] != 0):
                 predImgWindow[1,1] = 0
+
+                # 200 is for IndianPines
+                #hsiDataWindow2D = hsiDataWindow.reshape(9,200)
                 
-                hsiDataWindow2D = hsiDataWindow.reshape(9,bands)
+                # 462 is for Randy01
+                #hsiDataWindow2D = hsiDataWindow.reshape(9,462)
+                
+                hsiDataWindow2D = hsiDataWindow.reshape(9,hsiData.shape[-1])
                 predImgWindow2D = predImgWindow.reshape(9,)
                 
                 coeff = np.corrcoef(hsiDataWindow2D)[:,0]
