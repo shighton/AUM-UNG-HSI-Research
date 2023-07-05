@@ -7,6 +7,11 @@ import numpy as np
 # weight:   nx1 array of weights for each element
 def weightedMedian(data, weights):
     wSum = np.sum(weights)
+
+    #For the borders - Dr. Kursun
+    if np.isnan(wSum):
+        return 0
+        
     weights = weights / wSum  #make sure sum of weights is one
     
     ind = np.argsort(data) #sort elements increasing order
