@@ -1141,6 +1141,21 @@ def train(
                 metric=abs(metric),
             )
 
+# Added load_model from Dr. Kursun code
+def load_model(model_name, dataset_name, filename = None):
+    nntype = 0
+    if filename == 'NN_TYPE':
+        nntype = 1
+        filename = None
+    if filename is None:
+        model_dir = "./checkpoints/" + model_name + "/" + dataset_name + "/"
+        list_of_files = glob.glob(model_dir + '*')
+        filename = max(list_of_files, key=os.path.getctime)
+    if nntype:
+        model = torch.load(filename)
+    else:
+        model = joblib.load(filename)
+    return model
 
 def save_model(model, model_name, dataset_name, **kwargs):
     model_dir = "/mnt/checkpoints/" + model_name + "/" + dataset_name + "/" 
