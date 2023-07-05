@@ -95,7 +95,13 @@ class threeLayerHSIClassification(BaseEstimator, ClassifierMixin):
                 
         return np.sum(p) 
     
-    #% This function calculates contour score of a test sample
+    #% This function calculates reference score of a test sample
     def findReferenceScore(self,testSample, reference,numOfFeatures):
-        c = np.corrcoef(testSample, reference)[0, 1]
-        return max(0.0, c)
+        # c = np.corrcoef(testSample, reference)[0, 1]
+        # return max(0.0, c)
+
+        # Replaces lines 100-101 with Dr. Kursun fix
+        c = np.corrcoef(testSample, reference)
+        c[np.isnan(c)] = 0
+        return max(0.0, c[0][1])
+
