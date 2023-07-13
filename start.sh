@@ -1,5 +1,5 @@
 #!/bin/bash
-cd /workspace 
-{ python -m visdom.server & } 2>/dev/null
+cd /workspace
 
-
+# For visdom
+# { python -m visdom.server & } 2>/dev/null
