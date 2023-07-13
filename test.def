@@ -58,7 +58,7 @@ From: ubuntu:22.04
     echo "installing packages"
     pip3 install --no-cache-dir -r /workspace/requirements.txt
     # It will then run start.sh
-    sh /workspace/start.sh
+    # sh /workspace/start.sh
 
 %startscript
     nc -lp $LISTEN_PORT
