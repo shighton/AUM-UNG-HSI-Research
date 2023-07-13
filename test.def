@@ -31,9 +31,10 @@ From: ubuntu:22.04
     
 %environment
     # Set environment variables
-    export LISTEN_PORT=8097
+    # export LISTEN_PORT=8097
     export LC_ALL=C
-    export PATH=/opt/conda/bin:$PATH
+    # export PATH=/opt/conda/bin:$PATH
+    export PATH=/ocean/projects/cts090005p/shighton:$PATH
     export DEBIAN_FRONTEND=noninteractive
 
 %post
@@ -58,10 +59,10 @@ From: ubuntu:22.04
     echo "installing packages"
     pip3 install --no-cache-dir -r /workspace/requirements.txt
     # It will then run start.sh
-    # sh /workspace/start.sh
+    sh /workspace/start.sh
 
 %startscript
-    nc -lp $LISTEN_PORT
+    # nc -lp $LISTEN_PORT
     
 %test
     grep -q NAME=\"Ubuntu\" /etc/os-release
