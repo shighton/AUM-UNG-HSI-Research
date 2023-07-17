@@ -1,4 +1,4 @@
 #!/bin/bash
 cd /workspace
 echo "hello"
-{ python -m main.py --dataset IndianPines --training_sample 0.3 & } 2>/dev/null
+{ python main.py --dataset IndianPines --training_sample 0.3 --model threeLayer & } 2>/dev/null
