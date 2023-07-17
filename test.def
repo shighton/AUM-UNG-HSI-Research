@@ -57,7 +57,8 @@ From: ubuntu:22.04
 %runscript
     # When the SIF file is run, it will download the packages listed in requirements.txt if not already installed.
     echo "installing packages"
-    pip3 install --no-cache-dir -r /workspace/requirements.txt
+    # pip3 install --no-cache-dir -r /workspace/requirements.txt
+    pip install --no-cache-dir -r /workspace/requirements.txt
     # It will then run start.sh
     sh /workspace/start.sh
 
