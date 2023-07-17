@@ -62,7 +62,7 @@ From: ubuntu:22.04
     sh /workspace/start.sh
 
 %startscript
-    # nc -lp $LISTEN_PORT
+    nc -lp $LISTEN_PORT
     
 %test
     grep -q NAME=\"Ubuntu\" /etc/os-release
