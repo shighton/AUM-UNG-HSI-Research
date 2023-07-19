@@ -9,6 +9,7 @@ From: ubuntu:22.04
     #mkdir ${SINGULARITY_ROOTFS}/workspace/A2S2KResNet
     # Create a directory called "data" and a directory called "Datasets" inside that folder on the host system.
     mkdir -p data/Datasets
+
 %files
     # Copy files from the host machine to the workspce folder on the Singularity image.
     main.py /workspace
@@ -26,8 +27,6 @@ From: ubuntu:22.04
     three_layer_classification/*.py /workspace/three_layer_classification
     #A2S2KResNet/*.py /workspace/A2S2KResNet
     #SpectralNet/*.py /workspace/SpectralNet
-    
-   
     
 %environment
     # Set environment variables
@@ -52,7 +51,6 @@ From: ubuntu:22.04
     chmod +x ~/miniconda.sh && \
     ~/miniconda.sh -b -p /opt/conda && \
     rm ~/miniconda.sh
-    
     rm -rf /var/lib/apt/lists/*
     
 %runscript
@@ -60,7 +58,7 @@ From: ubuntu:22.04
     echo "installing packages"
     pip3 install --no-cache-dir -r /workspace/requirements.txt
     # It will then run start.sh
-    sh /workspace/start.sh
+    #sh /workspace/start.sh
 
 %startscript
     nc -lp $LISTEN_PORT
