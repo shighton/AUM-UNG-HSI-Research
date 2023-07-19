@@ -59,7 +59,7 @@ From: ubuntu:22.04
     pip3 install --no-cache-dir -r /workspace/requirements.txt
     # It will then run start.sh
     sh /workspace/start.sh
-    exec python main.py --dataset IndianPines --training_sample 0.3 --model threeLayer
+    #exec python main.py --dataset IndianPines --training_sample 0.3 --model threeLayer
 
 %startscript
     nc -lp $LISTEN_PORT
