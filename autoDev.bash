@@ -1,3 +1,5 @@
+sed -i -e 's/\r$//' autoDev.bash
+chmod +x autoDev.bash
 #!/usr/bin/bash
 # Use this to update the SIF file. Will replace outdated DeepHSI,
 # build, and copy the new SIF file to the bridges2 project folder.
