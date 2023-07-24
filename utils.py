@@ -330,8 +330,8 @@ def grouper(n, iterable):
             return
         yield chunk
 
-
-def metrics(prediction, target, training_time, testing_time, ignored_labels=[], n_classes=None):
+# def metrics(prediction, target, training_time, testing_time, ignored_labels=[], n_classes=None):
+def metrics(prediction, target, ignored_labels=[], n_classes=None):
     """Compute and print metrics (accuracy, confusion matrix and F1 scores).
 
     Args:
@@ -342,7 +342,8 @@ def metrics(prediction, target, training_time, testing_time, ignored_labels=[], 
     Returns:
         accuracy, F1 score by class, confusion matrix
     """
-    ignored_mask = np.zeros(target.shape[:2], dtype=np.bool)
+    #Changed dtype=np.bool to just bool
+    ignored_mask = np.zeros(target.shape[:2], dtype=bool)
     for l in ignored_labels:
         ignored_mask[target == l] = True
     ignored_mask = ~ignored_mask
