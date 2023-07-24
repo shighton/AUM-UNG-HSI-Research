@@ -569,10 +569,10 @@ for run in range(N_RUNS):
             using_gpu = "True"
 
         if(N_RUNS == 1):
-            show_results(run_results, viz, label_values=LABEL_VALUES)
+            show_results(run_results, vis, label_values=LABEL_VALUES)
             #show_results(run_results, label_values=LABEL_VALUES, model=MODEL, dataset=DATASET, training_sample=SAMPLE_PERCENTAGE, gpu=args.cuda, runs=N_RUNS)
 
     if N_RUNS > 1:
         # show_results(results, viz, label_values=LABEL_VALUES, agregated=True)
-        show_results(results, viz, label_values=LABEL_VALUES, agregated=True)
+        show_results(results, vis, label_values=LABEL_VALUES, agregated=True)
         #show_results(results, label_values=LABEL_VALUES, agregated=True, model=MODEL, dataset=DATASET, training_sample=SAMPLE_PERCENTAGE, gpu=args.cuda, runs=N_RUNS)
