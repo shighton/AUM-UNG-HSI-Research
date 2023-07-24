@@ -1,3 +1,3 @@
-#!/usr/bin
+#!/usr/bin/bash
 cd ..
 ./autoDev.bash
