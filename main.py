@@ -55,6 +55,31 @@ import argparse
 import cProfile, pstats, io
 from pstats import SortKey
 
+#From Dr. Kursun's version
+def obtain_and_show_results(prediction, test_gt):
+    run_results = metrics(
+        prediction,
+        test_gt,
+        ignored_labels=hyperparams["ignored_labels"],
+        n_classes=N_CLASSES,
+    )
+
+    mask = np.zeros(gt.shape, dtype="bool")
+    for l in IGNORED_LABELS:
+        mask[gt == l] = True
+    prediction[mask] = 0
+
+    color_prediction = convert_to_color(prediction)
+    display_predictions(
+        color_prediction,
+        viz,
+        gt=convert_to_color(test_gt),
+        caption="Prediction vs. test ground truth",
+    )
+
+    results.append(run_results)
+    show_results(run_results, viz, label_values=LABEL_VALUES)
+
 pr = cProfile.Profile()
 
 dataset_names = [
@@ -569,11 +594,14 @@ for run in range(N_RUNS):
             using_gpu = "True"
 
         #We are bringing this to the left so all models will be able to display information with 1 run
-        #if(N_RUNS == 1):
-        #    show_results(run_results, label_values=LABEL_VALUES, model=MODEL, dataset=DATASET, training_sample=SAMPLE_PERCENTAGE, gpu=args.cuda, runs=N_RUNS)
+        if(N_RUNS == 1):
+            show_results(run_results, label_values=LABEL_VALUES, model=MODEL, dataset=DATASET, training_sample=SAMPLE_PERCENTAGE, gpu=args.cuda, runs=N_RUNS)
 
-    if(N_RUNS == 1):
-        show_results(run_results, label_values=LABEL_VALUES, model=MODEL, dataset=DATASET, training_sample=SAMPLE_PERCENTAGE, gpu=args.cuda, runs=N_RUNS)
+    #if(N_RUNS == 1):
+        #show_results(run_results, label_values=LABEL_VALUES, model=MODEL, dataset=DATASET, training_sample=SAMPLE_PERCENTAGE, gpu=args.cuda, runs=N_RUNS)
+
+    #Calling Dr. Kursun obtain and show results function
+    obtain_and_show_results(prediction, test_gt)
     
     if N_RUNS > 1:
         # show_results(results, viz, label_values=LABEL_VALUES, agregated=True)
