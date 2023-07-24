@@ -1,5 +1,5 @@
-# numpy==1.20.0
-numpy
+numpy==1.20.0
+# numpy
 # spectral==0.20
 scipy>=1.4.1
 tqdm>=4.15.0
