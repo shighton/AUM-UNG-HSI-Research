@@ -406,7 +406,8 @@ def get_gpu_info(ordinal):
 
 #def show_results(results, vis, label_values=None, agregated=False):
 
-def show_results(results, model, dataset, training_sample, gpu, runs, label_values=None, agregated=False):
+#Added vis
+def show_results(results, vis, model, dataset, training_sample, gpu, runs, label_values=None, agregated=False):
     c_matrix = ""
     text = ""
     agregatedText = ""
