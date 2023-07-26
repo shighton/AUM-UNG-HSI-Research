@@ -57,6 +57,7 @@ from pstats import SortKey
 
 #From Dr. Kursun's version
 #Added training and testing times to metrics in run_results
+#New show_results from our version
 def obtain_and_show_results(prediction, test_gt):
     run_results = metrics(
         prediction,
@@ -81,7 +82,8 @@ def obtain_and_show_results(prediction, test_gt):
     )
 
     results.append(run_results)
-    show_results(run_results, viz, label_values=LABEL_VALUES)
+    show_results(run_results, label_values=LABEL_VALUES, agregated=True, model=MODEL, dataset=DATASET, training_sample=SAMPLE_PERCENTAGE, gpu=args.cuda, runs=N_RUNS)
+    #show_results(run_results, viz, label_values=LABEL_VALUES)
 
 pr = cProfile.Profile()
 
