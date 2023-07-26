@@ -74,12 +74,12 @@ def obtain_and_show_results(prediction, test_gt):
     prediction[mask] = 0
 
     color_prediction = convert_to_color(prediction)
-    display_predictions(
-        color_prediction,
-        #viz,
-        gt=convert_to_color(test_gt),
-        caption="Prediction vs. test ground truth",
-    )
+    #display_predictions(
+    #    color_prediction,
+    #    #viz,
+    #    gt=convert_to_color(test_gt),
+    #    caption="Prediction vs. test ground truth",
+    #)
 
     results.append(run_results)
     show_results(run_results, label_values=LABEL_VALUES, agregated=True, model=MODEL, dataset=DATASET, training_sample=SAMPLE_PERCENTAGE, gpu=args.cuda, runs=N_RUNS)
