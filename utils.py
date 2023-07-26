@@ -6,7 +6,7 @@ import sklearn.model_selection
 import seaborn as sns
 import itertools
 import spectral
-import visdom
+#import visdom
 import matplotlib.pyplot as plt
 from scipy import io, misc
 import os
@@ -89,18 +89,19 @@ def convert_from_color_(arr_3d, palette=None):
 
     return arr_2d
 
+#Visdom no longer in use
+#def display_predictions(pred, vis, gt=None, caption=""):
+#    if gt is None:
+#        vis.images([np.transpose(pred, (2, 0, 1))],
+#                    opts={'caption': caption})
+#    else:
+#        vis.images([np.transpose(pred, (2, 0, 1)),
+#                    np.transpose(gt, (2, 0, 1))],
+#                    nrow=2,
+#                    opts={'caption': caption})
 
-def display_predictions(pred, vis, gt=None, caption=""):
-    if gt is None:
-        vis.images([np.transpose(pred, (2, 0, 1))],
-                    opts={'caption': caption})
-    else:
-        vis.images([np.transpose(pred, (2, 0, 1)),
-                    np.transpose(gt, (2, 0, 1))],
-                    nrow=2,
-                    opts={'caption': caption})
-
-def display_dataset(img, gt, bands, labels, palette, vis):
+#removed vis from arguments
+def display_dataset(img, gt, bands, labels, palette):
     """Display the specified dataset.
 
     Args:
@@ -120,10 +121,11 @@ def display_dataset(img, gt, bands, labels, palette, vis):
     # Display the RGB composite image
     caption = "RGB (bands {}, {}, {})".format(*bands)
     # send to visdom server
-    vis.images([np.transpose(rgb, (2, 0, 1))],
-                opts={'caption': caption})
+    #vis.images([np.transpose(rgb, (2, 0, 1))],
+    #            opts={'caption': caption})
 
-def explore_spectrums(img, complete_gt, class_names, vis,
+#removed vis from arguments
+def explore_spectrums(img, complete_gt, class_names,
                       ignored_labels=None):
     """Plot sampled spectrums with mean + std for each class.
 
@@ -158,12 +160,13 @@ def explore_spectrums(img, complete_gt, class_names, vis,
         plt.fill_between(range(len(mean_spectrum)), lower_spectrum,
                          higher_spectrum, color="#3F5D7D")
         plt.plot(mean_spectrum, alpha=1, color="#FFFFFF", lw=2)
-        vis.matplot(plt)
+        #vis.matplot(plt)
         mean_spectrums[class_names[c]] = mean_spectrum
     return mean_spectrums
 
 
-def plot_spectrums(spectrums, vis, title=""):
+#removed vis from arguments
+def plot_spectrums(spectrums, title=""):
     """Plot the specified dictionary of spectrums.
 
     Args:
@@ -174,8 +177,8 @@ def plot_spectrums(spectrums, vis, title=""):
     for k, v in spectrums.items():
         n_bands = len(v)
         update = None if win is None else 'append'
-        win = vis.line(X=np.arange(n_bands), Y=v, name=k, win=win, update=update,
-                       opts={'title': title})
+        #win = vis.line(X=np.arange(n_bands), Y=v, name=k, win=win, update=update,
+                       #opts={'title': title})
 
 
 def build_dataset(mat, gt, ignored_labels=None):
@@ -406,8 +409,8 @@ def get_gpu_info(ordinal):
 
 #def show_results(results, vis, label_values=None, agregated=False):
 
-#Added vis
-def show_results(results, vis, model, dataset, training_sample, gpu, runs, label_values=None, agregated=False):
+#Removed vis from arguments
+def show_results(results, model, dataset, training_sample, gpu, runs, label_values=None, agregated=False):
     c_matrix = ""
     text = ""
     agregatedText = ""
