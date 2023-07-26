@@ -56,12 +56,15 @@ import cProfile, pstats, io
 from pstats import SortKey
 
 #From Dr. Kursun's version
+#Added training and testing times to metrics in run_results
 def obtain_and_show_results(prediction, test_gt):
     run_results = metrics(
         prediction,
         test_gt,
         ignored_labels=hyperparams["ignored_labels"],
         n_classes=N_CLASSES,
+        training_time=training_time,
+        testing_time=testing_time
     )
 
     mask = np.zeros(gt.shape, dtype="bool")
