@@ -76,7 +76,7 @@ def obtain_and_show_results(prediction, test_gt):
     color_prediction = convert_to_color(prediction)
     display_predictions(
         color_prediction,
-        viz,
+        #viz,
         gt=convert_to_color(test_gt),
         caption="Prediction vs. test ground truth",
     )
