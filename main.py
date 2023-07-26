@@ -36,7 +36,7 @@ from utils import (
     convert_to_color_,
     convert_from_color_,
     display_dataset,
-    display_predictions,
+    #display_predictions,
     explore_spectrums,
     plot_spectrums,
     sample_gt,
