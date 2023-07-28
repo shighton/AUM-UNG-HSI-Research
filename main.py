@@ -454,7 +454,7 @@ for run in range(N_RUNS):
         save_model(clf, MODEL, DATASET)
         prediction = clf.predict(img.reshape(-1, N_BANDS)) #give the whole dataset
         prediction = prediction.reshape(img.shape[:2])
-    elif MODEL == "threeLayer":
+    elif MODEL == "threeLayer" or MODEL == "twoLayer":
         from three_layer_classification.three_layer_model import threeLayerHSIClassification
         from three_layer_classification.guidedMedianFilter import guidedMedianFilter
         from sklearn.ensemble import RandomForestClassifier
@@ -489,11 +489,22 @@ for run in range(N_RUNS):
         #save_model(clf, MODEL, DATASET)
         prediction = rf.predict(X_transformed)
         prediction = prediction.reshape(img.shape[:2])
+
+        #Timing for twoLayer
+        testing_time2 = time.perf_counter() - test_time1
+        
+        #This is the prediction for twoLayer
+        prediction2 = prediction.reshape(img.shape[:2])
+        
         #Third layer starts here. GMF is applied to prediction image
         prediction = guidedMedianFilter(prediction,img)
         #prediction = prediction.reshape(img.shape[:2])
         #Stop Testing
-        testing_time = time.perf_counter() - test_time1 
+        testing_time = time.perf_counter() - test_time1
+        if MODEL == "twoLayer":
+            prediction = prediction2
+            testing_time = testing_time2
+    
     else:
         if CLASS_BALANCING:
             weights = compute_imf_weights(train_gt, N_CLASSES, IGNORED_LABELS)
