@@ -82,7 +82,7 @@ def obtain_and_show_results(prediction, test_gt):
     #)
 
     results.append(run_results)
-    show_results(run_results, label_values=LABEL_VALUES, agregated=True, model=MODEL, dataset=DATASET, training_sample=SAMPLE_PERCENTAGE, gpu=args.cuda, runs=N_RUNS)
+    show_results(run_results, label_values=LABEL_VALUES, model=MODEL, dataset=DATASET, training_sample=SAMPLE_PERCENTAGE, gpu=args.cuda, runs=N_RUNS)
     #show_results(run_results, viz, label_values=LABEL_VALUES)
 
 pr = cProfile.Profile()
