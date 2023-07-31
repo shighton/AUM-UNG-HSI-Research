@@ -4,7 +4,7 @@
 
 ### Update 7/31/2023: This version includes Dr. Kursun's fixes to run the previous AUM-dataset_latest.sif
 
-Container Link: Coming Soon!
+Container Link: [AUM-UNG-HSI-Research-7-31-2023](https://cloud.sylabs.io/library/shighton/hsi/aum-ung-hsi-research-7-31-2023)
 
 ...
 
