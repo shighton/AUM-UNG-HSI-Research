@@ -2,6 +2,8 @@
 
 ## Changes made:
 
+### Update 7/31/2023: This version includes Dr. Kursun's fixes to run the previous AUM-dataset_latest.sif
+
 ### aum-dataset.sif:version2 update
 
 Changed the threeLayer model to allow it to be run using different datasets 
